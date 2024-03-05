@@ -5,10 +5,10 @@ import { Module } from '@nestjs/common';
 import { LanguageModule } from './language/language.module';
 import { AuthorModule } from './author/author.module';
 import { ConfigModule } from '@nestjs/config';
-import { UserModule } from './user/user.module';
-// import { CategoryModule } from './category/category.module';
-// import { RatingModule } from './rating/rating.module';
-// import { UserBooksModule } from './user-books/user-books.module';
+// import { UserModule } from './user/user.module';
+import { CategoryModule } from './category/category.module';
+import { RatingModule } from './rating/rating.module';
+import { UserBooksModule } from './user-books/user-books.module';
 
 @Module({
   imports: [
@@ -18,10 +18,10 @@ import { UserModule } from './user/user.module';
     // CurrencyModule,
     LanguageModule,
     AuthorModule,
-    UserModule,
-    // CategoryModule,
-    // RatingModule,
-    // UserBooksModule,
+    // UserModule,
+    CategoryModule,
+    RatingModule,
+    UserBooksModule,
   ],
 })
 export class AppModule {}
