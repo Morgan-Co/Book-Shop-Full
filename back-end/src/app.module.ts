@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 // import { AuthModule } from './auth/auth.module';
 // import { BookModule } from './book/book.module';
-// import { CurrencyModule } from './currency/currency.module';
+import { CurrencyModule } from './currency/currency.module';
 import { LanguageModule } from './language/language.module';
 import { AuthorModule } from './author/author.module';
 import { ConfigModule } from '@nestjs/config';
@@ -15,7 +15,7 @@ import { RatingModule } from './rating/rating.module';
     ConfigModule.forRoot(),
     // AuthModule,
     // BookModule,
-    // CurrencyModule,
+    CurrencyModule,
     LanguageModule,
     AuthorModule,
     // UserModule,
