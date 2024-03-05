@@ -1,0 +1,122 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Book {
+  id          String           @id @default(cuid())
+  name        String
+  description String?          @default("")
+  language    Language         @relation(fields: [languageId], references: [id])
+  currency    Currency         @relation(fields: [currencyId], references: [id])
+  currencyId  String           @map("currency_id")
+  languageId  String           @map("language_id")
+  rating      Rating[]
+  authors     BookAuthors[]
+  users       UserBooks[]
+  category    BookCategories[]
+  image       String
+  price Int
+
+  @@map("book")
+}
+
+
+model Currency {
+  id      String @id @default(cuid())
+  name    String @unique
+  acronym String @unique
+  book    Book[]
+
+  @@map("currency")
+}
+
+model Language {
+  id      String @id @default(cuid())
+  name    String @unique
+  acronym String @unique
+  book    Book[]
+
+  @@map("language")
+}
+
+model Rating {
+  id      String @id @default(cuid())
+  value   Int
+  comment String
+  book    Book   @relation(fields: [bookId], references: [id])
+  bookId  String @map("book_id")
+  user    User   @relation(fields: [userId], references: [id])
+  userId  String @map("user_id")
+
+  @@map("rating")
+}
+
+model BookAuthors {
+  books    Book   @relation(fields: [bookId], references: [id])
+  bookId   String @map("book_id")
+  authors  Author @relation(fields: [authorId], references: [id])
+  authorId String @map("author_id")
+
+  @@id([authorId, bookId])
+  @@map("book_authors")
+}
+
+model Author {
+  id          String        @id @default(cuid())
+  firstName   String        @map("first_name")
+  lastName    String        @map("last_name")
+  yearsActive DateTime      @default(now()) @map("years_active")
+  books       BookAuthors[]
+
+  @@map("author")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  name        String?
+  email       String  @unique
+  description String?
+  password    String
+
+  books  UserBooks[]
+  rating Rating[]
+
+  @@map("user")
+}
+
+model Category {
+  id        String           @id @default(cuid())
+  name      String           @unique
+  createdAt DateTime         @default(now()) @map("created_at")
+  books     BookCategories[]
+
+  @@map("category")
+}
+
+model UserBooks {
+  book   Book   @relation(fields: [bookId], references: [id])
+  bookId String @map("book_id")
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @map("user_id")
+
+  @@id([bookId, userId])
+  @@map("user_books")
+}
+
+model BookCategories {
+  book       Book     @relation(fields: [bookId], references: [id])
+  bookId     String   @map("book_id")
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String   @map("category_id")
+
+  @@id([categoryId, bookId])
+  @@map("book_categories")
+}

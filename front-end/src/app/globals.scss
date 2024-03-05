@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--foreground-rgb: 0, 0, 0;
+	--background-start-rgb: 214, 219, 220;
+	--background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--foreground-rgb: 255, 255, 255;
+		--background-start-rgb: 0, 0, 0;
+		--background-end-rgb: 0, 0, 0;
+	}
+}
+
+* {
+	// outline: 1px solid #5192ac;
+}
+
+.container {
+	@apply max-w-[1120px] w-full mx-auto px-[20px] box-border;
+}
+
+body {
+	@apply text-base;
+	font-family: var(--main-font), sans-serif;
+	color: #000000;
+	background-color: #ffffff;
+}
+
+.imgParent {
+	button,
+	svg {
+		transition: all 0.15s ease;
+	}
+	&:hover {
+		button {
+			svg {
+				color: darken(#4c3db2, 10%);
+			}
+			background: lighten(#4c3db2, 40%);
+		}
+	}
+}
+
+.inputFile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputFile + label {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 14px;
+	font-weight: 700;
+	color: white;
+	width: 120px;
+	height: 30px;
+	background-color: white;
+	color: #4c3db2;
+	border: 1px solid #4c3db2;
+	display: inline-block;
+}
+
+.inputFile:focus + label,
+.inputFile + label:hover {
+	background-color: gray;
+}
+
+.inputFile + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+.inputFile:focus + label {
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+
+.bookLink {
+	transition: all 0.2s ease;
+	&:hover {
+		h4 {
+			color: #4c3db2;
+		}
+	}
+}
