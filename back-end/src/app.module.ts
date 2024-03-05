@@ -18,7 +18,7 @@ import { UserModule } from './user/user.module';
     // CurrencyModule,
     LanguageModule,
     AuthorModule,
-    // UserModule,
+    UserModule,
     // CategoryModule,
     // RatingModule,
     // UserBooksModule,
