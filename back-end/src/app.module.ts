@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AuthModule } from './auth/auth.module';
 import { BookModule } from './book/book.module';
-// import { CurrencyModule } from './currency/currency.module';
-// import { LanguageModule } from './language/language.module';
-// import { AuthorModule } from './author/author.module';
-import { ConfigModule } from '@nestjs/config';
+import { CurrencyModule } from './currency/currency.module';
+import { LanguageModule } from './language/language.module';
+import { AuthorModule } from './author/author.module';
+// import { ConfigModule } from '@nestjs/config';
 // import { UserModule } from './user/user.module';
 // import { CategoryModule } from './category/category.module';
 // import { RatingModule } from './rating/rating.module';
@@ -12,12 +12,12 @@ import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    // ConfigModule.forRoot(),
     AuthModule,
     BookModule,
-    // CurrencyModule,
-    // LanguageModule,
-    // AuthorModule,
+    CurrencyModule,
+    LanguageModule,
+    AuthorModule,
     // UserModule,
     // CategoryModule,
     // RatingModule,
