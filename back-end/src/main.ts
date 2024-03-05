@@ -8,8 +8,8 @@ async function bootstrap() {
   app.use(cookieParser());
   app.enableCors({
     origin: ['http://localhost:3000', 'https://book-shop-full.vercel.app'],
-    // credentials: true,
-    // exposedHeaders: 'set-cookie',
+    credentials: true,
+    exposedHeaders: 'set-cookie',
   });
   await app.listen(4200);
 }
