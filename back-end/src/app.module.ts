@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-// import { AuthModule } from './auth/auth.module';
-// import { BookModule } from './book/book.module';
+import { AuthModule } from './auth/auth.module';
+import { BookModule } from './book/book.module';
 // import { CurrencyModule } from './currency/currency.module';
 import { LanguageModule } from './language/language.module';
 import { AuthorModule } from './author/author.module';
@@ -13,8 +13,8 @@ import { AuthorModule } from './author/author.module';
 @Module({
   imports: [
     // ConfigModule.forRoot(),
-    // AuthModule,
-    // BookModule,
+    AuthModule,
+    BookModule,
     // CurrencyModule,
     LanguageModule,
     AuthorModule,
